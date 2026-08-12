@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.navbar {
+    background: #c62828;
+    box-shadow: 0 3px 15px rgba(0,0,0,.2);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+}
+
+.nav-link {
+    color: white !important;
+    margin-left: 18px;
+    transition: .3s;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #ffd54f !important;
+}
+
+.nav-link.active {
+    color: #ffd54f !important;
+}
+
+.hero {
+    background: linear-gradient(rgba(198,40,40,.92), rgba(198,40,40,.92));
+    color: white;
+    padding: 70px 20px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 750px;
+    margin: auto;
+    opacity: .95;
+}
+
+.buscador {
+    border: none;
+    border-radius: 15px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+.buscador .card-body {
+    padding: 30px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    min-height: 48px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #c62828;
+    box-shadow: 0 0 8px rgba(198,40,40,.25);
+}
+
+.oferta {
+    border: none;
+    border-radius: 18px;
+    transition: .3s;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.oferta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.18);
+}
+
+.oferta .card-body {
+    padding: 35px;
+}
+
+.oferta h3 {
+    color: #c62828;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.oferta h5 {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.datos span {
+    background: #f5f5f5;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.descripcion {
+    color: #555;
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.fecha {
+    color: #777;
+    font-size: 15px;
+}

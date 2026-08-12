@@ -1,0 +1,119 @@
+body {
+    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background-color: #c62828;
+    box-shadow: 0 3px 15px rgba(0,0,0,.2);
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: white !important;
+    margin-left: 15px;
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: #ffd54f !important;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
+}
+
+.card-header {
+    background: #c62828;
+    color: white;
+    padding: 25px;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-weight: 600;
+}
+
+#previewFoto {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #c62828;
+    background: white;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    transition: .3s;
+}
+
+.form-control:focus {
+    border-color: #c62828;
+    box-shadow: 0 0 8px rgba(198,40,40,.3);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn-danger {
+    background: #c62828;
+    border: none;
+    transition: .3s;
+}
+
+.btn-danger:hover {
+    background: #a71d1d;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    transition: .3s;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+}
+
+hr {
+    margin: 35px 0;
+    border: 1px solid #ddd;
+}
+
+footer {
+    background: #757575;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+@media(max-width:768px){
+    #previewFoto {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 20px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+}

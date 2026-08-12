@@ -1,10 +1,11 @@
 <?php
+session_start();
 // Importa el DAO
 require_once __DIR__ . '/dao/UsuarioDAO.php';
 // Indica que la respuesta será JSON
 header('Content-Type: application/json');
 // Obtiene el parámetro action de la URL
-$action = $_GET['action'] ?? '';
+$action = $_POST['action'] ?? '';
 // Estructura de control principal
 switch ($action) {
 
@@ -15,9 +16,9 @@ switch ($action) {
 
   case 'usuario':
       // Verifica si viene el ID
-      if (isset($_GET['id'])) {
+      if (isset($_POST['id'])) {
 
-          echo json_encode(getUsuario($_GET['id']));
+          echo json_encode(getUsuario($_POST['id']));
 
       } else {
           echo json_encode(["error" => "Falta id"]);
@@ -25,18 +26,18 @@ switch ($action) {
       break;
    case 'agregar_usuario':
 
-      $nombre = $_GET['nombre'] ?? '';
+      $nombre = $_POST['nombre'] ?? '';
 
-      $apellido = $_GET['apellido'] ?? '';
+      $apellido = $_POST['apellido'] ?? '';
 
-      $telefono = $_GET['telefono'] ?? '';
+      $telefono = $_POST['telefono'] ?? '';
 
-      $correo = $_GET['correo'] ?? '';
+      $correo = $_POST['correo'] ?? '';
 
-      $contraseña = $_GET['contraseña'] ?? '';
-      if ($nombre && $apellido && $telefono && $correo && $contraseña) {
+      $contrasena = $_POST['contrasena'] ?? '';
+      if ($nombre && $apellido && $telefono && $correo && $contrasena) {
 
-          $ok = agregarUsuario($nombre, $apellido, $telefono, $correo, $contraseña);
+          $ok = agregarUsuario($nombre, $apellido, $telefono, $correo, $contrasena);
 
           echo json_encode($ok);
 
@@ -47,6 +48,28 @@ switch ($action) {
       }
 
       break;
+      case 'login':
+
+    $correo = $_POST['correo'] ?? '';
+    $contrasena = $_POST['contrasena'] ?? '';
+
+    $usuario = login($correo, $contrasena);
+
+    if($usuario){
+
+        $_SESSION["id"] = $usuario["id"];
+        $_SESSION["nombre"] = $usuario["nombre"];
+        $_SESSION["correo"] = $usuario["correo"];
+
+        echo json_encode(true);
+
+    }else{
+
+        echo json_encode(false);
+
+    }
+
+    break;
 
 
   default:

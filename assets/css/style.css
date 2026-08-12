@@ -1,0 +1,151 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+.navbar {
+    background: #c62828;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, .2);
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: white !important;
+    margin-left: 15px;
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: #ffd54f !important;
+}
+
+.hero {
+    background:
+        linear-gradient(rgba(198, 40, 40, .75), rgba(198, 40, 40, .75)),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZufWOelwvUzBSW6KgJoXRuYyUZ4BmI3sdn3sDjokW2yJYUIyE-5AhjFo&s=10");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 160px 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+.btn-principal {
+    background: white;
+    color: #c62828;
+    font-weight: bold;
+    padding: 12px 35px;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+.btn-principal:hover {
+    background: #e0e0e0;
+    color: #c62828;
+    transform: scale(1.05);
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.titulo {
+    color: #c62828;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.empresa-img {
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+}
+
+.estadisticas {
+    background: #c62828;
+    color: white;
+    padding: 70px 0;
+}
+
+.estadisticas h2 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: .4s;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.2);
+}
+
+.card i {
+    font-size: 60px;
+    color: #c62828;
+    margin-bottom: 20px;
+}
+
+.btn-servicio {
+    background: #c62828;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-servicio:hover {
+    background: #a61d1d;
+    color: white;
+}
+
+.carousel {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.carousel img {
+    height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+footer {
+    background: #444;
+    color: white;
+    padding: 50px 0;
+    margin-top: 70px;
+}
+
+footer i {
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.whatsapp {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 65px;
+    height: 65px;
+    background: #25D366;
+}

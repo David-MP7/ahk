@@ -33,12 +33,43 @@ function getUsuario($id) {
   // Devuelve un solo registro
   return $stmt->get_result()->fetch_assoc();
 }
-function agregarUsuario($nombre, $apellido, $telefono, $correo, $contraseña) {
+function agregarUsuario($nombre, $apellido, $telefono, $correo, $contrasena) {
   $conn = conectar();
 
-  $stmt = $conn->prepare("Insert into usuarios(nombre, apellido, telefono, correo, contraseña) values(?, ?, ?, ?, ?)");
+  $hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
-  $stmt->bind_param("ss", $nombre, $apellido, $telefono, $correo, $contraseña);
+  $stmt = $conn->prepare("Insert into usuarios(nombre, apellido, telefono, correo, contrasena) 
+  values(?, ?, ?, ?, ?)"
+  );
+
+  $stmt->bind_param(
+  "sssss", 
+  $nombre, 
+  $apellido, 
+  $telefono, 
+  $correo, 
+  $hash);
 
   return $stmt->execute();
+}
+function login($correo, $contrasena) {
+
+    $conn = conectar();
+
+    $stmt = $conn->prepare("
+        SELECT * FROM usuarios
+        WHERE correo = ?
+    ");
+
+    $stmt->bind_param("s", $correo);
+
+    $stmt->execute();
+
+    $usuario = $stmt->get_result()->fetch_assoc();
+
+    if ($usuario && password_verify($contrasena, $usuario["contrasena"])) {
+        return $usuario;
+    }
+
+    return false;
 }

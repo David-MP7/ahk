@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <title>Registro de Usuario</title>
+
+    <style>
+/* =======================
+        REGISTRO
+======================= */
+
+.register-container{
+    max-width: 550px;
+    margin: 70px auto;
+}
+/* =======================
+            TARJETA
+    ======================= */
+
+    .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, .15);
+        transition: .3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, .2);
+    }
+
+    .card-header {
+        background-color: #c62828;
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+
+                <img src="assets/img/logo.png"
+                    alt="Logo AHK Uruguay"
+                    width="50"
+                    height="50"
+                    class="me-2">
+
+                AHK-Uruguay
+
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Servicios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Trabaja con nosotros</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Formulario -->
+    <div class="container register-container">
+
+        <div class="card">
+
+            <div class="card-header">
+                Crear Cuenta
+            </div>
+
+            <div class="card-body">
+
+                <form id="formRegistro">
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input 
+                        type="text" 
+                        id="nombre" 
+                        name="nombre" 
+                        class="form-control" 
+                        placeholder="Ingresa tu nombre" 
+                        pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+                        title="Solo se permiten letras"
+                        onkeypress="return soloLetras(event)"
+                        required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Apellido</label>
+                        <input 
+                        type="text" 
+                        id="apellido" 
+                        name="apellido" 
+                        class="form-control" 
+                        placeholder="Ingresa tu apellido" 
+                        pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+                        title="Solo se permiten letras"
+                        onkeypress="return soloLetras(event)"
+                        required >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input 
+                        type="tel" 
+                        id="telefono" 
+                        name="telefono" 
+                        class="form-control" 
+                        placeholder="Ingresa tu teléfono" 
+                        pattern="[0-9]{8,15}"
+                        maxlength="15"
+                        title="Solo números (entre 8 y 15 dígitos)"
+                        onkeypress="return soloNumeros(event)"
+                        required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" class="form-control" placeholder="Ingresa tu correo" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" id="contrasena" name="contrasena" class="form-control" placeholder="Crea una contraseña" required>
+                    </div>
+
+                    <button type="button" class="btn btn-danger w-100" onclick="guardar_usuario()">
+                           Registrarse
+                        </button>
+
+                </form>
+
+                <hr>
+
+                <div class="text-center">
+
+                    <p>¿Ya tienes una cuenta?</p>
+
+                    <a href="login.html" class="btn btn-outline-danger w-100">
+                        Iniciar Sesión
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 AHK-Uruguay | Todos los derechos reservados.
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
