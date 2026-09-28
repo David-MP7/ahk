@@ -1,0 +1,415 @@
+/* ==========================
+   GENERAL
+=========================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #f5f6f8;
+
+    color: #2d3436;
+
+}
+
+
+/* ==========================
+   NAVBAR
+=========================== */
+
+.navbar {
+
+    background: #c62828;
+
+    padding: 8px 0;
+
+}
+
+.navbar-brand {
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+}
+
+.navbar-brand img {
+
+    object-fit: contain;
+
+}
+
+.nav-link {
+
+    font-weight: 400;
+
+    margin-left: 10px;
+
+    transition: 0.3s;
+
+}
+
+.nav-link:hover {
+
+    color: #ffd54f !important;
+
+}
+
+
+/* ==========================
+   BIENVENIDA
+=========================== */
+
+.welcome-section {
+
+    padding: 10px 0;
+
+}
+
+.welcome-section h1 {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+.welcome-section p {
+
+    margin-bottom: 0;
+
+}
+
+
+/* ==========================
+   TARJETA DE PERFIL
+=========================== */
+
+.profile-card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+    border: 1px solid #eeeeee;
+
+}
+
+
+/* FOTO */
+
+.profile-photo {
+
+    flex-shrink: 0;
+
+}
+
+.profile-photo img,
+.default-photo {
+
+    width: 145px;
+
+    height: 145px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 5px solid #f1f1f1;
+
+}
+
+
+.default-photo {
+
+    background: #eeeeee;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 55px;
+
+    color: #999;
+
+}
+
+
+/* INFORMACIÓN */
+
+.profile-info {
+
+    flex: 1;
+
+}
+
+.profile-label {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #c62828;
+
+    letter-spacing: 1px;
+
+}
+
+.profile-info h2 {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin: 5px 0;
+
+}
+
+.profession {
+
+    color: #777;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* CONTACTO */
+
+.contact-info {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin-bottom: 22px;
+
+    color: #555;
+
+    font-size: 14px;
+
+}
+
+.contact-info i {
+
+    color: #c62828;
+
+    margin-right: 7px;
+
+}
+
+
+/* BOTÓN */
+
+.btn-danger {
+
+    background: #c62828;
+
+    border: none;
+
+    padding: 10px 22px;
+
+    border-radius: 8px;
+
+}
+
+.btn-danger:hover {
+
+    background: #a71d1d;
+
+}
+
+
+/* ==========================
+   SECCIÓN
+=========================== */
+
+.section-title {
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* ==========================
+   TARJETAS DE OPCIONES
+=========================== */
+
+.option-card {
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    height: 100%;
+
+    border: 1px solid #eeeeee;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+    transition: 0.3s;
+
+}
+
+.option-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+
+}
+
+
+.option-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 12px;
+
+    background: #fdeaea;
+
+    color: #c62828;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+
+}
+
+.option-card h4 {
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+}
+
+.option-card p {
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    min-height: 45px;
+
+}
+
+.option-link {
+
+    color: #c62828;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+}
+
+.option-link:hover {
+
+    color: #a71d1d;
+
+}
+
+.option-link i {
+
+    margin-left: 5px;
+
+}
+
+
+/* ==========================
+   FOOTER
+=========================== */
+
+footer {
+
+    margin-top: 70px;
+
+    padding: 25px 0;
+
+    background: #343a40;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-size: 14px;
+
+}
+
+
+/* ==========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+
+    .profile-card {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+    .contact-info {
+
+        justify-content: center;
+
+    }
+
+    .profile-info h2 {
+
+        font-size: 24px;
+
+    }
+
+    .welcome-section h1 {
+
+        font-size: 26px;
+
+    }
+
+}

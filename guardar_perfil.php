@@ -95,7 +95,7 @@ if($resultado->num_rows > 0){
 
     $sql = "UPDATE perfil_usuario SET
 
-        foto = ?,
+        foto = COALESCE(NULLIF(?, ''), foto),
 
         nombre_completo = ?,
 
@@ -113,7 +113,7 @@ if($resultado->num_rows > 0){
 
         contacto = ?,
 
-        curriculum = ?
+        curriculum = COALESCE(NULLIF(?, ''), curriculum)
 
         WHERE id_usuario = ?";
 

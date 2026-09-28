@@ -103,7 +103,7 @@ $conn->close();
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="inicio_sesion.php">
                         Mi Perfil
                     </a>
                 </li>
@@ -246,7 +246,7 @@ accept="image/*">
     <textarea
         class="form-control"
         name="presentacion"
-        rows="7"
+        rows="3"
         placeholder="Cuéntanos sobre ti, tus objetivos profesionales, tus fortalezas y por qué una empresa debería contratarte."><?php echo $perfil["presentacion"] ?? ""; ?></textarea>
 
 </div>
@@ -267,7 +267,7 @@ accept="image/*">
     <textarea
         class="form-control"
         name="experiencia"
-        rows="7"
+        rows="3"
         placeholder="Describe tu experiencia laboral, empresas donde trabajaste, cargos desempeñados, responsabilidades y logros."><?php echo $perfil["experiencia"] ?? ""; ?></textarea>
 
 </div>
@@ -289,7 +289,7 @@ accept="image/*">
     <textarea
         class="form-control"
         name="estudios"
-        rows="6"
+        rows="3"
         placeholder="Escribe tus estudios, cursos, certificaciones, universidad, instituto o formación técnica."><?php echo $perfil["estudios"] ?? ""; ?></textarea>
 
 </div>
@@ -311,7 +311,7 @@ accept="image/*">
     <textarea
         class="form-control"
         name="habilidades"
-        rows="5"
+        rows="3"
         placeholder="Ejemplo: Trabajo en equipo, HTML, CSS, JavaScript, PHP, Office, Atención al cliente, Liderazgo..."><?php echo $perfil["habilidades"] ?? ""; ?></textarea>
 
 </div>
@@ -333,7 +333,7 @@ accept="image/*">
     <textarea
         class="form-control"
         name="idiomas"
-        rows="4"
+        rows="3"
         placeholder="Ejemplo: Español (Nativo), Inglés (Intermedio), Alemán (Básico)."><?php echo $perfil["idiomas"] ?? ""; ?></textarea>
 
 </div>
@@ -354,7 +354,7 @@ accept="image/*">
     <textarea
         class="form-control"
         name="contacto"
-        rows="5"
+        rows="3"
         placeholder="Ingresa información de contacto adicional. Ejemplo: Dirección, LinkedIn, GitHub, página web, etc."><?php echo $perfil["contacto"] ?? ""; ?></textarea>
 
 </div>
@@ -403,8 +403,7 @@ Ver Curriculum Actual
         Solo se permiten archivos PDF.
 
     </div>
-
-</div>
+    
 
 <!-- ==========================
         BOTONES
@@ -421,7 +420,7 @@ Ver Curriculum Actual
     </button>
 
     <a
-        href="principal.html"
+        href="inicio_sesion.php"
         class="btn btn-secondary btn-lg px-5">
 
         Cancelar

@@ -45,7 +45,7 @@ href="../css/admin.css">
 
 <div class="logo">
 
-<img src="../../images/logo.png"
+<img src="../../assets/img/logo.png"
 width="80">
 
 <h4 class="mt-3">

@@ -29,7 +29,7 @@ function iniciarSesion(){
 
         if(data){
 
-            window.location.href="perfil.php";
+            window.location.href="inicio_sesion.php";
 
         }else{
 

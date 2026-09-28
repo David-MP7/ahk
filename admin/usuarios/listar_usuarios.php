@@ -20,12 +20,9 @@ if(!isset($_SESSION["admin"])){
 
 $conn = conectar();
 
-
-
 /*==============================
-        OBTENER USUARIOS
+        BUSCAR USUARIOS
 ==============================*/
-
 
 $sql = "
 
@@ -51,17 +48,36 @@ LEFT JOIN perfil_usuario
 
 ON usuarios.id = perfil_usuario.id_usuario
 
-
-ORDER BY usuarios.id DESC
-
+WHERE 1=1
 
 ";
 
+$tipos = "";
+$params = [];
 
+if (!empty($_GET['nombre'])) {
+    $sql .= " AND (usuarios.nombre LIKE ? OR perfil_usuario.nombre_completo LIKE ?)";
+    $tipos .= "ss";
+    $params[] = '%' . $_GET['nombre'] . '%';
+    $params[] = '%' . $_GET['nombre'] . '%';
+}
 
-$resultado = $conn->query($sql);
+if (!empty($_GET['correo'])) {
+    $sql .= " AND usuarios.correo LIKE ?";
+    $tipos .= "s";
+    $params[] = '%' . $_GET['correo'] . '%';
+}
 
+$sql .= " ORDER BY usuarios.id DESC";
 
+$stmt = $conn->prepare($sql);
+
+if (!empty($tipos)) {
+    $stmt->bind_param($tipos, ...$params);
+}
+
+$stmt->execute();
+$resultado = $stmt->get_result();
 
 ?>
 
@@ -202,6 +218,64 @@ Usuarios registrados
 </div>
 
 
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <form action="listar_usuarios.php" method="GET">
+
+            <div class="row g-3">
+
+                <div class="col-lg-4">
+
+                    <input
+                        type="text"
+                        name="nombre"
+                        class="form-control"
+                        placeholder="Buscar por nombre"
+                        value="<?php echo htmlspecialchars($_GET['nombre'] ?? ''); ?>">
+
+                </div>
+
+                <div class="col-lg-3">
+
+                    <input
+                        type="text"
+                        name="correo"
+                        class="form-control"
+                        placeholder="Buscar por correo"
+                        value="<?php echo htmlspecialchars($_GET['correo'] ?? ''); ?>">
+
+                </div>
+
+                <div class="col-lg-1">
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger w-100">
+
+                        🔍
+
+                    </button>
+
+                </div>
+
+                <div class="col-lg-1">
+
+                    <a
+                        href="listar_usuarios.php"
+                        class="btn btn-secondary w-100">
+
+                        🗑
+
+                    </a>
+            </div>
+        </div>
+        </form>
+
+    </div>
+
+</div>
 
 
 <div class="card shadow">

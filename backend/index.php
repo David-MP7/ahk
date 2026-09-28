@@ -1,6 +1,7 @@
 <?php
 session_start();
 // Importa el DAO
+require_once __DIR__ . '/email.php';
 require_once __DIR__ . '/dao/UsuarioDAO.php';
 // Indica que la respuesta será JSON
 header('Content-Type: application/json');
@@ -70,7 +71,141 @@ switch ($action) {
     }
 
     break;
+    case 'recuperar_contrasena':
 
+    $correo = $_POST['correo'] ?? '';
+
+    if (!$correo) {
+
+        echo json_encode([
+            "ok" => false,
+            "mensaje" => "Debes ingresar un correo."
+        ]);
+
+        break;
+    }
+
+
+    $usuario = buscarUsuarioPorCorreo($correo);
+
+
+    /*
+     * No informamos si el correo existe
+     * por seguridad.
+     */
+
+    if ($usuario) {
+
+        $token = crearTokenRecuperacion($usuario["id"]);
+
+
+        if ($token) {
+
+            $enviado = enviarCorreoRecuperacion(
+                $usuario["correo"],
+                $usuario["nombre"],
+                $token
+            );
+
+
+            if (!$enviado) {
+
+                error_log(
+                    "No se pudo enviar el correo de recuperación."
+                );
+            }
+        }
+    }
+
+
+    /*
+     * Siempre mostramos el mismo mensaje,
+     * exista o no el correo.
+     */
+
+    echo json_encode([
+
+        "ok" => true,
+
+        "mensaje" =>
+            "Si existe una cuenta asociada a ese correo, " .
+            "recibirás instrucciones para restablecer tu contraseña."
+
+    ]);
+
+    break;
+    case 'restablecer_contrasena':
+
+    $token = $_POST['token'] ?? '';
+
+    $nueva_contrasena =
+        $_POST['nueva_contrasena'] ?? '';
+
+
+    if (!$token || !$nueva_contrasena) {
+
+        echo json_encode([
+
+            "ok" => false,
+
+            "mensaje" =>
+                "Faltan datos para cambiar la contraseña."
+
+        ]);
+
+        break;
+
+    }
+
+
+    if (strlen($nueva_contrasena) < 8) {
+
+        echo json_encode([
+
+            "ok" => false,
+
+            "mensaje" =>
+                "La contraseña debe tener al menos 8 caracteres."
+
+        ]);
+
+        break;
+
+    }
+
+
+    $resultado = restablecerContrasena(
+        $token,
+        $nueva_contrasena
+    );
+
+
+    if ($resultado) {
+
+        echo json_encode([
+
+            "ok" => true,
+
+            "mensaje" =>
+                "Tu contraseña fue cambiada correctamente."
+
+        ]);
+
+    } else {
+
+        echo json_encode([
+
+            "ok" => false,
+
+            "mensaje" =>
+                "El enlace no es válido o ya expiró."
+
+        ]);
+
+    }
+
+
+    break;
 
   default:
       echo json_encode(["error" => "Ruta no válida"]);

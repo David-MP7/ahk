@@ -13,10 +13,39 @@ if (!isset($_SESSION["id"])) {
 
 $conn = conectar();
 
-$sql = "SELECT * FROM ofertas_laborales
-        ORDER BY fecha_publicacion DESC";
+// Armamos la consulta según los filtros que vengan por GET
+$sql = "SELECT * FROM ofertas_laborales WHERE 1=1";
+$tipos = "";
+$params = [];
 
-$resultado = $conn->query($sql);
+if (!empty($_GET['titulo'])) {
+    $sql .= " AND titulo LIKE ?";
+    $tipos .= "s";
+    $params[] = '%' . $_GET['titulo'] . '%';
+}
+
+if (!empty($_GET['ubicacion'])) {
+    $sql .= " AND ubicacion LIKE ?";
+    $tipos .= "s";
+    $params[] = '%' . $_GET['ubicacion'] . '%';
+}
+
+if (!empty($_GET['modalidad'])) {
+    $sql .= " AND modalidad = ?";
+    $tipos .= "s";
+    $params[] = $_GET['modalidad'];
+}
+
+$sql .= " ORDER BY fecha_publicacion DESC";
+
+$stmt = $conn->prepare($sql);
+
+if (!empty($tipos)) {
+    $stmt->bind_param($tipos, ...$params);
+}
+
+$stmt->execute();
+$resultado = $stmt->get_result();
 
 ?>
 
@@ -115,7 +144,7 @@ $resultado = $conn->query($sql);
                 <li class="nav-item">
 
                     <a class="nav-link"
-                       href="perfil.php">
+                       href="inicio_sesion.php">
 
                         Mi Perfil
 
@@ -178,62 +207,72 @@ $resultado = $conn->query($sql);
 
         <div class="card-body">
 
-            <div class="row g-3">
+            <form action="ofertas_laborales.php" method="GET">
 
-                <div class="col-lg-5">
+                <div class="row g-3">
 
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Buscar por cargo">
+                    <div class="col-lg-5">
+
+                        <input
+                            type="text"
+                            name="titulo"
+                            class="form-control"
+                            placeholder="Buscar por cargo"
+                            value="<?php echo htmlspecialchars($_GET['titulo'] ?? ''); ?>">
+
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <input
+                            type="text"
+                            name="ubicacion"
+                            class="form-control"
+                            placeholder="Ubicación"
+                            value="<?php echo htmlspecialchars($_GET['ubicacion'] ?? ''); ?>">
+
+                    </div>
+
+                    <div class="col-lg-2">
+
+                        <select name="modalidad" class="form-select">
+
+                            <option value="">
+                                Todas
+                            </option>
+
+                            <option value="Presencial" <?php echo ($_GET['modalidad'] ?? '') === 'Presencial' ? 'selected' : ''; ?>>
+                                Presencial
+                            </option>
+
+                            <option value="Híbrido" <?php echo ($_GET['modalidad'] ?? '') === 'Híbrido' ? 'selected' : ''; ?>>
+                                Híbrido
+                            </option>
+
+                            <option value="Remoto" <?php echo ($_GET['modalidad'] ?? '') === 'Remoto' ? 'selected' : ''; ?>>
+                                Remoto
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-lg-2">
+
+                        <button
+                            type="submit"
+                            class="btn btn-danger w-100">
+
+                            Buscar
+
+                        </button>
+
+                    </div>
 
                 </div>
+                
 
-                <div class="col-lg-3">
-
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Ubicación">
-
-                </div>
-
-                <div class="col-lg-2">
-
-                    <select class="form-select">
-
-                        <option>
-                            Todas
-                        </option>
-
-                        <option>
-                            Presencial
-                        </option>
-
-                        <option>
-                            Híbrido
-                        </option>
-
-                        <option>
-                            Remoto
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div class="col-lg-2">
-
-                    <button
-                        class="btn btn-danger w-100">
-
-                        Buscar
-
-                    </button>
-
-                </div>
-
-            </div>
+            </form>
 
         </div>
 
