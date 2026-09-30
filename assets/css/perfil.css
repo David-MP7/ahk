@@ -22,98 +22,231 @@ body {
 .nav-link:hover {
     color: #ffd54f !important;
 }
-
-.card {
-    border: none;
-    border-radius: 15px;
+.perfil-container {
+    max-width: 950px;
+}
+.perfil-card {
+    background: #ffffff;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eeeeee;
 }
-
-.card-header {
-    background: #c62828;
+.perfil-header {
+    background: linear-gradient(135deg, #c62828, #a71d1d);
     color: white;
-    padding: 25px;
+    padding: 24px 30px;
 }
 
-.card-header h2 {
+.perfil-header h2 {
     margin: 0;
+    font-size: 1.7rem;
     font-weight: 600;
 }
 
-#previewFoto {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 6px solid #c62828;
-    background: white;
+.perfil-header p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+.perfil-body {
+    padding: 30px;
+}
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
 }
 
-.form-label {
+.section-title > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #fbe9e9;
+    color: #c62828;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.section-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #333;
 }
 
+.section-title p {
+    margin: 2px 0 0;
+    font-size: 0.82rem;
+    color: #888;
+}
+.main-profile {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 35px;
+}
+.photo-section {
+    text-align: center;
+}
+
+.photo-wrapper {
+    margin-bottom: 10px;
+}
+
+.profile-photo {
+    width: 130px;
+    height: 130px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 4px solid #f5f5f5;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.photo-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.photo-section input {
+    font-size: 0.8rem;
+}
+
+.photo-section small {
+    display: block;
+    color: #999;
+    margin-top: 6px;
+}
+.field {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 7px;
+}
+
 .form-control {
-    border-radius: 10px;
-    border: 1px solid #ced4da;
-    transition: .3s;
+    border: 1px solid #dcdcdc;
+    border-radius: 9px;
+    padding: 10px 13px;
+    transition: 0.25s;
+    box-shadow: none;
 }
 
 .form-control:focus {
     border-color: #c62828;
-    box-shadow: 0 0 8px rgba(198,40,40,.3);
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.10);
+}
+.profile-section {
+    padding: 25px 0;
+    border-top: 1px solid #eeeeee;
 }
 
-textarea {
+.profile-section textarea {
     resize: vertical;
 }
+.current-cv {
+    margin-top: 12px;
+}
 
-.btn-danger {
+.current-cv .btn {
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.form-text {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 7px;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    padding-top: 25px;
+    margin-top: 10px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+.btn-save {
     background: #c62828;
-    border: none;
-    transition: .3s;
-}
-
-.btn-danger:hover {
-    background: #a71d1d;
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    transition: .3s;
-}
-
-.btn-secondary:hover {
-    transform: translateY(-2px);
-}
-
-hr {
-    margin: 35px 0;
-    border: 1px solid #ddd;
-}
-
-footer {
-    background: #757575;
     color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 60px;
+    border: none;
+
+    padding: 10px 25px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    transition: 0.25s;
 }
 
-@media(max-width:768px){
-    #previewFoto {
-        width: 140px;
-        height: 140px;
-        margin-bottom: 20px;
-    }
+.btn-save:hover {
+    background: #a71d1d;
+    color: white;
+    transform: translateY(-1px);
+}
 
-    .navbar-brand {
-        font-size: 20px;
-    }
+.btn-cancel {
+    background: #f3f3f3;
+    color: #555;
 
-    .card-body {
+    padding: 10px 25px;
+
+    border-radius: 8px;
+
+    font-weight: 500;
+
+    border: none;
+}
+
+.btn-cancel:hover {
+    background: #e5e5e5;
+    color: #333;
+}
+@media (max-width: 768px) {
+
+    .perfil-body {
         padding: 20px;
     }
+
+    .main-profile {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-section {
+        margin-bottom: 10px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+
 }
